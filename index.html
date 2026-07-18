@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excuse Generator</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        font-family: Arial, sans-serif;
+      }
+
+      .excuse-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .modern-button {
+        background: linear-gradient(135deg, #8b5cf6, #ec4899);
+        color: white;
+        border: none;
+        border-radius: 999px;
+        padding: 14px 26px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .modern-button:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      }
+
+      .excuse-output {
+        margin: 0;
+        min-height: 24px;
+        color: #f8fafc;
+        text-align: center;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="excuse-card">
+      <button id="generateExcuseButton" class="modern-button">Generate Excuse</button>
+      <p id="excuseOutput" class="excuse-output"></p>
+    </div>
+
+    <script src="excuse-generator.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const button = document.getElementById('generateExcuseButton');
+        const output = document.getElementById('excuseOutput');
+
+        button.addEventListener('click', function () {
+          const randomWho = who[Math.floor(Math.random() * who.length)];
+          const randomAction = action[Math.floor(Math.random() * action.length)];
+          const randomWhat = what[Math.floor(Math.random() * what.length)];
+          const randomWhen = when[Math.floor(Math.random() * when.length)];
+
+          output.textContent = `${randomWho} ${randomAction} ${randomWhat} ${randomWhen}.`;
+        });
+      });
+    </script>
+  </body>
+</html>
